@@ -1,23 +1,39 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage("git clone") {
+        stage("DEscription-Shiva") {
             steps {
-                git branch:"main",url:"https://github.com/shiva-yadav-9390/college_website1.git"
+                sh "echo different pipeline behaviour on "
             }
         }
-        stage("docker image") {
+        stage("docker image build") {
             steps {
                 sh "docker build -t shiva ."
             }
         }
-        stage("container run") {
+       
+        
+        stage("when branch is dev") {
+            when {
+                branch 'dev'
+            }
             steps {
                 sh '''
-                docker stop c1 || true
-                docker rm c1 || true
-                docker run -d -p 80:80 --name c1 shiva
-                docker ps
+                docker stop c1 ||true
+                docker rm c1 ||true
+                docker run -d  -p 1010:80 --name c1 shiva
+                '''
+            }
+        }
+        stage("when branch is main") {
+            when {
+                branch "main"
+            }
+            steps {
+                sh '''
+                docker stop c2 || true
+                docker rm c2 || true
+                docker run -d -p 80:80 --name c2 shiva
                 '''
             }
         }
