@@ -43,9 +43,9 @@ pipeline {
             }
             steps {
                 sh '''
-                docker stop c2 || true
-                docker rm c2 || true
-                docker run -d -p 900:80 --name c2 shiva
+                docker stop SHIVA || true
+                docker rm SHIVA || true
+                docker run -d -p 900:80 --name SHIVA shiva
                 '''
             }
         }
