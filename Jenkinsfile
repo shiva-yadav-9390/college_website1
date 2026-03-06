@@ -37,15 +37,15 @@ pipeline {
                 '''
             }
         }
-        stage("when branch is main") {
+        stage("when branch is SHIVA") {
             when {
-                branch "main"
+                branch "SHIVA"
             }
             steps {
                 sh '''
                 docker stop c2 || true
                 docker rm c2 || true
-                docker run -d -p 80:80 --name c2 shiva
+                docker run -d -p 900:80 --name c2 shiva
                 '''
             }
         }
