@@ -37,5 +37,17 @@ pipeline {
                 '''
             }
         }
+        stage("when branch is main") {
+            when {
+                branch "main"
+            }
+            steps {
+                sh '''
+                docker stop c2 || true
+                docker rm c2 || true
+                docker run -d -p 80:80 --name c2 shiva
+                '''
+            }
+        }
     }
 }
