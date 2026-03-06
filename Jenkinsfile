@@ -43,9 +43,9 @@ pipeline {
             }
             steps {
                 sh '''
-                docker stop c2 || true
-                docker rm c2 || true
-                docker run -d -p 800:80 --name c2 shiva
+                docker stop PRASAD || true
+                docker rm PRASAD || true
+                docker run -d -p 800:80 --name PRASAD shiva
                 '''
             }
         }
