@@ -33,7 +33,7 @@ pipeline {
                 sh '''
                 docker stop c2 || true
                 docker rm c2 || true
-                docker run -d -p 80:80 --name c2 shiva
+                docker run -d -p 1200:80 --name c2 shiva
                 '''
             }
         }
